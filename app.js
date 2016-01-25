@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var mongoose = require('mongoose');
 
 // Routes
 var routes = require('./routes/index');
@@ -13,7 +12,8 @@ var users = require('./routes/users');
 
 var app = express();
 
-// Database connection
+// Database
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/stripe-node');
 
 // Passportjs authentication and session

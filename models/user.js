@@ -19,7 +19,7 @@ var emailValidator = [
 var passwordValidator = [
   validate({
     validator: 'isLength',
-    arguments: [8, 300],
+    arguments: [8, 72],
     message: 'Password must be at least {ARGS[0]} and less than {ARGS[1]} characters'
   })
 ];
