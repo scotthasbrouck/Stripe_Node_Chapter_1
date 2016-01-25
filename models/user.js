@@ -3,6 +3,7 @@ var validate = require('mongoose-validator');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
+// Email and password validators with custom error messages
 var emailValidator = [
   validate({
     validator: 'isEmail',
@@ -15,7 +16,6 @@ var emailValidator = [
     message: 'Email is required, and must be less than {ARGS[1]} characters'
   })
 ];
-
 var passwordValidator = [
   validate({
     validator: 'isLength',
@@ -24,6 +24,7 @@ var passwordValidator = [
   })
 ];
 
+// User schema
 var userSchema = new Schema({
   email: { type: String, index: { unique: true, dropDups: true }, validate: emailValidator },
   password: { type: String, validate: passwordValidator },
@@ -31,17 +32,19 @@ var userSchema = new Schema({
   updated_at: Date
 });
 
+// hash the password with bcrypt before writing to the database
 userSchema.pre('save', function(next) {
-  if (!this.isModified('password')) { return next(); }
-  this.password = bcrypt.hashSync(this.password, 10);
+  if (!this.isModified('password')) { this.password = bcrypt.hashSync(this.password, 10); }
   next();
 });
 
+// ensure that all emails are stored lower case
 userSchema.pre('save', function(next) {
-  this.email = this.email && this.email.toLowerCase();
+  if (this.isModified('email')) { this.email = this.email && this.email.toLowerCase(); }
   next();
 });
 
+// Set updated and created dates before writing to database
 userSchema.pre('save', function(next) {
   var currentDate = new Date();
   this.updatedAt = currentDate;
