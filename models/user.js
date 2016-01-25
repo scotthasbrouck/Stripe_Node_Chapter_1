@@ -1,25 +1,46 @@
 var mongoose = require('mongoose');
+var validate = require('mongoose-validator');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
+var emailValidator = [
+  validate({
+    validator: 'isEmail',
+    arguments: [{allow_display_name: false, require_tld: true }],
+    message: 'A properly formatted email address is required to create an account'
+  }),
+  validate({
+    validator: 'isLength',
+    arguments: [3, 300],
+    message: 'Email is required, and must be less than {ARGS[1]} characters'
+  })
+];
+
+var passwordValidator = [
+  validate({
+    validator: 'isLength',
+    arguments: [8, 300],
+    message: 'Password must be at least {ARGS[0]} and less than {ARGS[1]} characters'
+  })
+];
+
 var userSchema = new Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  email: { type: String, index: { unique: true, dropDups: true }, validate: emailValidator },
+  password: { type: String, validate: passwordValidator },
   created_at: Date,
   updated_at: Date
 });
 
 userSchema.pre('save', function(next) {
   if (!this.isModified('password')) { return next(); }
-  this.password = bcrypt.hashSync(req.body.password, 10);
+  this.password = bcrypt.hashSync(this.password, 10);
+  next();
 });
 
-userSchema.methods.authenticate = function(suppliedPassword, next) {
-  bcrypt.compare(suppliedPassword, this.password, function(err, isMatch) {
-    if (err) { return next(err); }
-    next(null, isMatch);
-  })
-};
+userSchema.pre('save', function(next) {
+  this.email = this.email && this.email.toLowerCase();
+  next();
+});
 
 userSchema.pre('save', function(next) {
   var currentDate = new Date();
@@ -29,5 +50,9 @@ userSchema.pre('save', function(next) {
   }
   next();
 });
+
+userSchema.methods.authenticate = function(suppliedPassword) {
+  return bcrypt.compareSync(suppliedPassword, this.password);
+};
 
 module.exports = mongoose.model('User', userSchema);

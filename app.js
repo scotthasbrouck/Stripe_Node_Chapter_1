@@ -4,15 +4,29 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mongoose = require('mongoose');
 
+// Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-// Database
-var mongoose = require('mongoose');
+// Database connection
 mongoose.connect('mongodb://localhost:27017/stripe-node');
+
+// Passportjs authentication and session
+// WARNING: For security, generate a key and save as an environment variable in production
+// For example:
+// app.use(session({ secret: process.env.SECRET }));
+var MongoStore = require('connect-mongo')(session);
+app.use(session({
+  secret: 'AD153D9A8786556D6245FB9D47734',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

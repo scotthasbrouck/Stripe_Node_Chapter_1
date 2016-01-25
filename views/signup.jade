@@ -5,13 +5,15 @@ block append content
   form(name="signup", action="/users/create", method="post")
     div
       label Email
-      input(type="text", name="email")
+      input(type="text", value=email, name="email")
     div
       label Password
       input(type="password", name="password")
     if errors
       ul
         for error in errors
-          li #{error}
+          li #{error.message}
     div
       input(type="submit", value="Get Started")
+      br
+      a(href='/login') Login

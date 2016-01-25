@@ -1,37 +1,44 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/scott/.nvm/versions/node/v0.12.7/bin/node',
-1 verbose cli   '/Users/scott/.nvm/versions/node/v0.12.7/bin/npm',
+1 verbose cli [ '/Users/scott/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/Users/scott/.nvm/versions/node/v5.0.0/bin/npm',
 1 verbose cli   'start' ]
-2 info using npm@2.11.3
-3 info using node@v0.12.7
+2 info using npm@3.3.6
+3 info using node@v5.0.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart stripe_membership_app_ch1@0.0.0
-6 info start stripe_membership_app_ch1@0.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info stripe_membership_app_ch1@0.0.0 Failed to exec start script
-9 verbose stack Error: stripe_membership_app_ch1@0.0.0 start: `node ./bin/www`
-9 verbose stack Exit status 1
-9 verbose stack     at EventEmitter.<anonymous> (/Users/scott/.nvm/versions/node/v0.12.7/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
-9 verbose stack     at EventEmitter.emit (events.js:110:17)
-9 verbose stack     at ChildProcess.<anonymous> (/Users/scott/.nvm/versions/node/v0.12.7/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-9 verbose stack     at ChildProcess.emit (events.js:110:17)
-9 verbose stack     at maybeClose (child_process.js:1015:16)
-9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
-10 verbose pkgid stripe_membership_app_ch1@0.0.0
-11 verbose cwd /Users/scott/Code/Stripe_Payments_Book/ch1
-12 error Darwin 14.5.0
-13 error argv "/Users/scott/.nvm/versions/node/v0.12.7/bin/node" "/Users/scott/.nvm/versions/node/v0.12.7/bin/npm" "start"
-14 error node v0.12.7
-15 error npm  v2.11.3
-16 error code ELIFECYCLE
-17 error stripe_membership_app_ch1@0.0.0 start: `node ./bin/www`
-17 error Exit status 1
-18 error Failed at the stripe_membership_app_ch1@0.0.0 start script 'node ./bin/www'.
-18 error This is most likely a problem with the stripe_membership_app_ch1 package,
-18 error not with npm itself.
-18 error Tell the author that this fails on your system:
-18 error     node ./bin/www
-18 error You can get their info via:
-18 error     npm owner ls stripe_membership_app_ch1
-18 error There is likely additional logging output above.
-19 verbose exit [ 1, true ]
+5 info lifecycle stripe_membership_app_ch1@0.0.0~prestart: stripe_membership_app_ch1@0.0.0
+6 silly lifecycle stripe_membership_app_ch1@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle stripe_membership_app_ch1@0.0.0~start: stripe_membership_app_ch1@0.0.0
+8 verbose lifecycle stripe_membership_app_ch1@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle stripe_membership_app_ch1@0.0.0~start: PATH: /Users/scott/.nvm/versions/node/v5.0.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/scott/Code/Stripe_Payments_Book/ch1/node_modules/.bin:/Users/scott/.nvm/versions/node/v5.0.0/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/opt/local/lib/postgresql92/bin:/opt/local/lib/postgresql92/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/Users/scott/.rvm/gems/ruby-2.0.0-p195/bin:/Users/scott/.rvm/gems/ruby-2.0.0-p195@global/bin:/Users/scott/.rvm/rubies/ruby-2.0.0-p195/bin:/Users/scott/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/mysql/bin:/Users/scott/.rvm/bin
+10 verbose lifecycle stripe_membership_app_ch1@0.0.0~start: CWD: /Users/scott/Code/Stripe_Payments_Book/ch1
+11 silly lifecycle stripe_membership_app_ch1@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
+12 silly lifecycle stripe_membership_app_ch1@0.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle stripe_membership_app_ch1@0.0.0~start: Failed to exec start script
+14 verbose stack Error: stripe_membership_app_ch1@0.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/scott/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/scott/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid stripe_membership_app_ch1@0.0.0
+16 verbose cwd /Users/scott/Code/Stripe_Payments_Book/ch1
+17 error Darwin 14.5.0
+18 error argv "/Users/scott/.nvm/versions/node/v5.0.0/bin/node" "/Users/scott/.nvm/versions/node/v5.0.0/bin/npm" "start"
+19 error node v5.0.0
+20 error npm  v3.3.6
+21 error code ELIFECYCLE
+22 error stripe_membership_app_ch1@0.0.0 start: `node ./bin/www`
+22 error Exit status 1
+23 error Failed at the stripe_membership_app_ch1@0.0.0 start script 'node ./bin/www'.
+23 error This is most likely a problem with the stripe_membership_app_ch1 package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get their info via:
+23 error     npm owner ls stripe_membership_app_ch1
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
